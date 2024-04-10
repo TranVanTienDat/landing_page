@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./js/menu.js"></script>
+    <script src="./js/view_product.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              dark: "#333333",
+              blue: "#32bfc2",
+              grayLight: "#f8f8f8",
+            },
+          },
+          backgroundImage: {
+            "hero-pattern": "url('/assets/images/banner.png')",
+            map: "url('/assets/images/map.png')",
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .shadow-custom-sub-menu {
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        .shadow-custom-product {
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        }
+        .max-width-customer {
+          max-width: 1280px;
+        }
+        .scroll::-webkit-scrollbar {
+          height: 0;
+          width: 0;
+        }
+        .bg-hero {
+          background-color: rgba(102, 102, 102, 0.8);
+        }
+        .flex-6 {
+          flex: 6 1 0%;
+        }
+        .flex-4 {
+          flex: 4 1 0%;
+        }
+
+        .info--active {
+          background-color: #333333;
+          color: #fff;
+        }
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- top header -->
+      <div class="bg-dark">
+        <div
+          class="mx-24 h-[100%] flex justify-between items-center text-gray-400 font-semibold text-xs lg:max-width-customer lg:mx-auto lg:px-12 max-sm:mx-[10px]"
+        >
+          <div>
+            <span class="text">Currecy: GBP</span>
+            <i class="fa-solid fa-angle-down down_icon"></i>
+          </div>
+
+          <div class="flex justify-center text-white">
+            <li
+              class="p-[10px] cursor-pointer list-none mx-[6px] active:text-blue"
+            >
+              <a href="./sign_up.html" class="fw">Register</a>
+            </li>
+            <li
+              class="p-[10px] cursor-pointer list-none mx-[6px] active:text-blue"
+            >
+              <a href="./sign_up.html" class="button_item">Sign In</a>
+            </li>
+
+            <div
+              class="flex justify-center items-center gap-[8px] bg-blue px-[8px] text-white"
+            >
+              <i
+                class="fa-solid fa-cart-shopping mr-[6px] relative top-[2px]"
+              ></i>
+              <span class="cart_btn">empty</span>
+              <i
+                class="fa-solid fa-angle-down relative top-[1px] cursor-pointer"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- nav -->
+      <div
+        class="py-[18px] mx-10 flex items-center justify-between lg:max-width-customer lg:mx-auto lg:px-12 max-sm:mx-[10px] max-sm:py-[10px]"
+      >
+        <!-- menu mobile    -->
+        <i
+          class="menu-mobile fa-solid fa-bars hidden text-2xl cursor-pointer max-lg:block max-sm:text-xl"
+        ></i>
+
+        <!--  -->
+        <img
+          class="max-sm:w-[120px] max-sm:hidden"
+          alt=""
+          src="assets/images/Logo.svg"
+        />
+
+        <div class="flex justify-between gap-[40px]">
+          <nav class="flex items-center list-none gap-[30px] max-lg:hidden">
+            <li class="group relative cursor-pointer">
+              <span
+                class="text-sm font-bold hover:text-blue group-hover:text-blue"
+                >MENS</span
+              >
+              <i
+                class="fa-solid fa-angle-down text-xs absolute left-0 bottom-[-16px] group-hover:text-blue"
+              ></i>
+              <!-- after element -->
+              <span
+                class="absolute z-10 left-0 bottom-[-30px] w-[100%] h-[30px] bg-transparent"
+              ></span>
+              <!--  -->
+
+              <!-- submenu -->
+              <div
+                class="hidden absolute left-0 top-[48px] z-10 p-[20px] lg:shadow-custom-sub-menu bg-white group-hover:block"
+              >
+                <div class="flex justify-start gap-[50px]">
+                  <div>
+                    <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                      CASUALS
+                    </h4>
+                    <ul class="flex flex-col gap-[8px]">
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Jackets</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Hoodies & Sweatshirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Polo Shirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Sportswear</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                      FORMAL
+                    </h4>
+                    <ul class="flex flex-col gap-[8px]">
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Jackets</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Hoodies & Sweatshirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Polo Shirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Sportswear</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-[50px] bg-dark text-center text-3xl font-semibold text-white p-[20px]"
+                >
+                  Autumn sale! up to 50% off
+                </div>
+              </div>
+            </li>
+
+            <li class="group relative cursor-pointer">
+              <span class="text-sm font-bold group-hover:text-blue"
+                >WOMENS</span
+              >
+              <i
+                class="fa-solid fa-angle-down text-xs absolute left-0 bottom-[-16px] group-hover:text-blue"
+              ></i>
+              <!-- after element -->
+              <span
+                class="absolute z-10 left-0 bottom-[-30px] w-[100%] h-[30px] bg-transparent"
+              ></span>
+              <!--  -->
+              <!-- submenu -->
+              <div
+                class="hidden absolute left-0 top-[48px] z-10 p-[20px] lg:shadow-custom-sub-menu bg-white group-hover:block"
+              >
+                <div class="flex justify-start gap-[50px]">
+                  <div>
+                    <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                      CASUALS
+                    </h4>
+                    <ul class="flex flex-col gap-[8px]">
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Jackets</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Hoodies & Sweatshirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Polo Shirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Sportswear</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                      FORMAL
+                    </h4>
+                    <ul class="flex flex-col gap-[8px]">
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Jackets</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Hoodies & Sweatshirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Polo Shirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Sportswear</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-[50px] bg-dark text-center text-3xl font-semibold text-white p-[20px]"
+                >
+                  Autumn sale! up to 50% off
+                </div>
+              </div>
+            </li>
+
+            <li class="group cursor-pointer">
+              <a href="" class="text-sm font-bold group-hover:text-blue"
+                >THE BRAND</a
+              >
+            </li>
+
+            <li class="group relative cursor-pointer">
+              <span class="text-sm font-bold group-hover:text-blue"
+                >LOCAL STORES</span
+              >
+              <i
+                class="fa-solid fa-angle-down text-xs absolute left-0 bottom-[-16px] group-hover:text-blue"
+              ></i>
+
+              <!-- after element -->
+              <span
+                class="absolute z-10 left-0 bottom-[-30px] w-[100%] h-[30px] bg-transparent"
+              ></span>
+              <!--  -->
+
+              <!-- submenu -->
+              <div
+                class="hidden absolute left-0 top-[48px] z-10 p-[20px] lg:shadow-custom-sub-menu bg-white group-hover:block"
+              >
+                <div class="flex justify-start gap-[50px]">
+                  <div>
+                    <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                      CASUALS
+                    </h4>
+                    <ul class="flex flex-col gap-[8px]">
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Jackets</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Hoodies & Sweatshirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Polo Shirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Sportswear</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                      FORMAL
+                    </h4>
+                    <ul class="flex flex-col gap-[8px]">
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Jackets</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Hoodies & Sweatshirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Polo Shirts</a
+                        >
+                      </li>
+                      <li class="w-max">
+                        <a
+                          class="text-sm text-gray-600 hover:text-[#db2828]"
+                          href=""
+                          >Sportswear</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-[50px] bg-dark text-center text-3xl font-semibold text-white p-[20px]"
+                >
+                  Autumn sale! up to 50% off
+                </div>
+              </div>
+            </li>
+          </nav>
+
+          <div class="flex items-start relative">
+            <input
+              placeholder="search"
+              class="outline-none border-soild border-[1px] border-gray-400 px-[8px] py-[4px] max-sm:px-[4px] max-sm:py-[2px] max-sm:text-[14px]"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute right-[8px] top-[50%] translate-y-[-50%] text-gray-400 p-[6px] bg-white active:text-blue cursor-pointer max-sm:text-[14px] max-sm:p-[4px] max-sm:right-[4px]"
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- hero -->
+      <div
+        class="relative bg-[url('/assets/images/banner_the_brand.png')] bg-cover bg-no-repeat bg-center pt-[30%]"
+      >
+        <!-- lớp phủ -->
+        <div class="absolute top-0 left-0 w-[100%] h-[100%] bg-hero"></div>
+
+        <div
+          class="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col items-center justify-center text-center"
+        >
+          <h1
+            class="text-5xl text-white mb-6 max-sm:text-2xl max-sm:mb-2 w-max"
+          >
+            <span class="font-bold">PRODUCT</span> VIEW
+          </h1>
+          <h3 class="text-3xl text-white max-sm:text-lg">
+            MENS - CASUALS - HOODIES & SWEATSHIRTS -
+            <span class="text-blue">AVE CLASSIC SWEATSHIRTS</span>
+          </h3>
+        </div>
+        >
+      </div>
+
+      <!-- nav menu mobile  -->
+      <div
+        class="menu-responsive fixed top-0 left-[-250px] py-[20px] px-[10px] h-[100vh] bg-[#5f5f5f] z-30"
+      >
+        <nav
+          class="flex flex-col items-start justify-center list-none gap-[10px] w-[156px]"
+        >
+          <img
+            class="hidden max-sm:w-[120px] mb-[20px] max-sm:block"
+            alt=""
+            src="assets/images/Logo.svg"
+          />
+          <li
+            class="group w-[100%] py-[10px] px-[14px] rounded-[12px] bg-[#db2828] flex justify-between items-center gap-2 relative cursor-pointer text-white"
+          >
+            <span class="text-sm font-bold">MENS</span>
+            <i
+              class="fa-solid fa-angles-right text-xs left-0 bottom-[-16px]"
+            ></i>
+            <!-- after element -->
+            <span
+              class="absolute z-10 right-[-10px] top-0 w-[100%] h-[30px] bg-transparent"
+            ></span>
+            <!--  -->
+
+            <!-- submenu -->
+            <div
+              class="hidden absolute z-10 top-0 left-[166px] p-[20px] lg:shadow-custom-sub-menu bg-white group-hover:block max-sm:fixed max-sm:left-0 max-sm:right-0"
+            >
+              <div class="flex justify-start gap-[50px]">
+                <div>
+                  <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                    CASUALS
+                  </h4>
+                  <ul class="flex flex-col gap-[8px]">
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Jackets</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Hoodies & Sweatshirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Polo Shirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Sportswear</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                    FORMAL
+                  </h4>
+                  <ul class="flex flex-col gap-[8px]">
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Jackets</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Hoodies & Sweatshirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Polo Shirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Sportswear</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="mt-[50px] bg-dark text-center text-3xl font-semibold text-white p-[20px]"
+              >
+                Autumn sale! up to 50% off
+              </div>
+            </div>
+          </li>
+
+          <li
+            class="group w-[100%] py-[10px] px-[14px] rounded-[12px] flex justify-between items-center gap-2 relative cursor-pointer text-white"
+          >
+            <span class="text-sm font-bold">WOMENS</span>
+            <i
+              class="fa-solid fa-angles-right text-xs left-0 bottom-[-16px]"
+            ></i>
+            <!-- after element -->
+            <span
+              class="absolute z-10 right-[-50px] top-0 w-[100%] h-[30px] bg-transparent"
+            ></span>
+            <!--  -->
+
+            <!-- submenu -->
+            <div
+              class="hidden absolute z-10 top-0 left-[166px] p-[20px] lg:shadow-custom-sub-menu bg-white group-hover:block max-sm:fixed max-sm:left-0 max-sm:right-0"
+            >
+              <div class="flex justify-start gap-[50px]">
+                <div>
+                  <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                    CASUALS
+                  </h4>
+                  <ul class="flex flex-col gap-[8px]">
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Jackets</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Hoodies & Sweatshirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Polo Shirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Sportswear</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                    FORMAL
+                  </h4>
+                  <ul class="flex flex-col gap-[8px]">
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Jackets</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Hoodies & Sweatshirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Polo Shirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Sportswear</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="mt-[50px] bg-dark text-center text-3xl font-semibold text-white p-[20px]"
+              >
+                Autumn sale! up to 50% off
+              </div>
+            </div>
+          </li>
+
+          <li
+            class="group w-[100%] py-[10px] px-[14px] rounded-[12px] cursor-pointer"
+          >
+            <a href="" class="text-sm font-bold text-white">THE BRAND</a>
+          </li>
+
+          <li
+            class="group w-[100%] py-[10px] px-[14px] rounded-[12px] flex justify-between items-center gap-2 relative cursor-pointer text-white"
+          >
+            <span class="text-sm font-bold">LOCAL STORES</span>
+            <i
+              class="fa-solid fa-angles-right text-xs left-0 bottom-[-16px]"
+            ></i>
+            <!-- after element -->
+            <span
+              class="absolute z-10 right-[-50px] top-0 w-[100%] h-[30px] bg-transparent"
+            ></span>
+            <!--  -->
+
+            <!-- submenu -->
+            <div
+              class="hidden absolute z-10 top-0 left-[166px] p-[20px] lg:shadow-custom-sub-menu bg-white group-hover:block max-sm:fixed max-sm:left-0 max-sm:right-0"
+            >
+              <div class="flex justify-start gap-[50px]">
+                <div>
+                  <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                    CASUALS
+                  </h4>
+                  <ul class="flex flex-col gap-[8px]">
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Jackets</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Hoodies & Sweatshirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Polo Shirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Sportswear</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold mb-[20px] text-gray-800">
+                    FORMAL
+                  </h4>
+                  <ul class="flex flex-col gap-[8px]">
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Jackets</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Hoodies & Sweatshirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Polo Shirts</a
+                      >
+                    </li>
+                    <li class="w-max">
+                      <a
+                        class="text-sm text-gray-600 hover:text-[#db2828]"
+                        href=""
+                        >Sportswear</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="mt-[50px] bg-dark text-center text-3xl font-semibold text-white p-[20px]"
+              >
+                Autumn sale! up to 50% off
+              </div>
+            </div>
+          </li>
+        </nav>
+      </div>
+
+      <!-- over lay -->
+      <div
+        class="over-lay hidden fixed right-0 left-0 top-0 bottom-0 z-20 bg-[#0000004d]"
+      ></div>
+      <!--  -->
+    </header>
+
+    <!-- container  -->
+    <main>
+      <div
+        class="mx-8 py-10 px-2 lg:max-width-customer lg:mx-auto max-sm:mx-[10px] max-sm:px-0"
+      >
+        <div
+          class="flex justify-center items-start items-stretch max-[900px]:flex-col max-[900px]:items-center"
+        >
+          <div
+            class="relative overflow-hidden lg:w-[600px] max-lg:w-[450px] max-[900px]:h-[600px] max-[450px]:w-[100%]"
+          >
+            <div
+              class="list-img-product absolute left-0 h-[100%] flex justify-start items-center transition-all duration-300 ease-in"
+            ></div>
+
+            <span
+              class="scroll-left group absolute left-0 top-[50%] translate-y-[-50%] p-2 bg-transparent hover:bg-blue cursor-pointer z-40"
+            >
+              <i
+                class="fa-solid fa-chevron-left text-xl text-[#575153] group-hover:text-white"
+              ></i>
+            </span>
+
+            <span
+              class="scroll-right group absolute right-0 top-[50%] translate-y-[-50%] p-2 bg-transparent hover:bg-blue cursor-pointer z-40"
+            >
+              <i
+                class="fa-solid fa-chevron-right text-xl text-[#575153] group-hover:text-white"
+              ></i>
+            </span>
+          </div>
+          <div class="flex-6 pl-6 max-[900px]:pl-0">
+            <h1 class="text-xl font-bold">AVE CLASSIC SWEATSHIRT</h1>
+
+            <!-- rating -->
+            <div class="flex items-center justify-start gap-2 my-2 flex-wrap">
+              <!-- star -->
+              <div class="relative overflow-hidden">
+                <div
+                  class="absolute left-0 flex overflow-hidden w-[50%] text-[#f86338] text-xs"
+                >
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="flex text-[#f86338] text-xs">
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+
+              <div class="text-[#727272] text-sm font-semibold">
+                4 Review(s)
+              </div>
+              <div class="w-[1.5px] h-[20px] bg-[#989898]"></div>
+              <div class="text-blue text-sm font-semibold cursor-pointer">
+                Add a Review
+              </div>
+              <div class="w-[1.5px] h-[20px] bg-[#989898]"></div>
+
+              <div class="flex justify-start items-center gap-3 text-[#8c8c8c]">
+                <span class="text-sm font-semibold">Share:</span>
+
+                <div
+                  class="flex justify-start items-center gap-6 relative top-[2px] text-sm"
+                >
+                  <i
+                    class="fa-brands fa-facebook-f cursor-pointer hover:text-[#db2828]"
+                  ></i>
+                  <i
+                    class="fa-solid fa-dove cursor-pointer hover:text-[#db2828]"
+                  ></i>
+                  <i
+                    class="fa-brands fa-square-instagram cursor-pointer hover:text-[#db2828]"
+                  ></i>
+                  <i
+                    class="fa-brands fa-google-plus-g cursor-pointer hover:text-[#db2828]"
+                  ></i>
+                  <i
+                    class="fa-brands fa-pinterest cursor-pointer hover:text-[#db2828]"
+                  ></i>
+                  <i
+                    class="fa-regular fa-envelope cursor-pointer hover:text-[#db2828]"
+                  ></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- price -->
+            <div
+              class="flex justify-start gap-6 text-3xl text-[#9a9a9a] ml-[10px]"
+            >
+              <span class="relative"
+                >107
+                <span class="absolute top-0 left-[-10px] text-xl font-normal"
+                  >£</span
+                >
+                <span
+                  class="absolute w-[100%] h-[1px] bg-[#8c8c8c] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+                ></span>
+              </span>
+              <span class="relative"
+                >89.99
+                <span class="absolute top-0 left-[-10px] text-xl font-normal"
+                  >£</span
+                >
+              </span>
+            </div>
+
+            <!-- info -->
+            <div class="my-4">
+              <div class="">
+                <div class="text-[#8c8c8c] text-sm font-medium mb-3">
+                  <span class="text-[#575153] font-semibold"
+                    >AVAILABILITY:
+                  </span>
+                  In stock Product.
+                </div>
+
+                <div class="text-[#8c8c8c] font-medium text-sm mb-3">
+                  <span class="text-[#575153] font-semibold">CODE: </span>
+                  #499577.
+                </div>
+
+                <div class="text-blue font-medium text-sm mb-3">
+                  <span class="text-[#575153] font-semibold">TAGS: </span>
+                  Classic, Casual, V-neck.
+                </div>
+              </div>
+
+              <div class="text-xs text-[#8e8c8c] font-normal">
+                <p class="">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Perferendis accusamus non officia temporibus fugiat
+                  repellendus fuga distinctio, nostrum odit voluptatem minima in
+                  sunt ullam quo consequatur velit ab suscipit cupiditate.
+                </p>
+                <div class="my-3">
+                  <li class="py-1 list-disc">Elasticated cuffs</li>
+                  <li class="py-1 list-disc">Casual fit</li>
+                  <li class="py-1 list-disc">100% Cotton</li>
+                  <li class="py-1 list-disc">Free ship</li>
+                </div>
+              </div>
+            </div>
+
+            <!-- select product -->
+            <div
+              class="flex justify-between items-center items-stretch gap-[10px]"
+            >
+              <div class="flex flex-col max-sm:flex-1">
+                <span class="text-[#575153] font-semibold text-sm mb-2"
+                  >COLOR</span
+                >
+                <select
+                  value="xanh"
+                  class="py-[8px] px-[6px] border-soild border-[1.5px] w-[150px] border-gray-400 outline-none text-[#575153] max-sm:w-auto"
+                >
+                  <option value="xanh">Xanh</option>
+                  <option value="hồng">Hồng</option>
+                  <option value="tím">Tím</option>
+                </select>
+              </div>
+              <div class="flex flex-col max-sm:flex-1">
+                <span class="text-[#575153] font-semibold text-sm mb-2"
+                  >SIZE</span
+                >
+                <select
+                  value="XL"
+                  class="py-[8px] px-[6px] border-soild border-[1.5px] w-[150px] border-gray-400 outline-none text-[#575153] max-sm:w-auto"
+                >
+                  <option value="XL">XL</option>
+                  <option value="L">L</option>
+                  <option value="M">M</option>
+                </select>
+              </div>
+              <div class="flex flex-col text-[#575153]">
+                <span class="font-semibold text-sm mb-2">QTY</span>
+                <div
+                  class="flex justify-center items-center border-[1px] border-soild border-gray-400"
+                >
+                  <span class="px-[14px] text-[20px] quantity">1</span>
+                  <div
+                    class="relative flex flex-col border-l-[1.5px] border-soild border-gray-400"
+                  >
+                    <i
+                      class="fa-solid fa-chevron-up px-[14px] py-[2px] cursor-pointer up"
+                    ></i>
+                    <i
+                      class="fa-solid fa-chevron-down px-[14px] py-[2px] cursor-pointer down"
+                    ></i>
+
+                    <span
+                      class="absolute top-[50%] translate-y-[-50%] w-[100%] h-[1.5px] bg-gray-400"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- button -->
+            <div class="my-[30px]">
+              <div class="flex justify-start items-center gap-5 mb-5">
+                <span
+                  class="text-sm text-gray-800 py-[8px] px-[12px] border-[1.5px] border-soild border-gray-800 font-medium cursor-pointer tracking-wide hover:text-white hover:border-[#333333] hover:bg-[#333333]"
+                >
+                  <i class="fa-solid fa-cart-shopping mr-[6px]"></i>
+                  ADD TO CART</span
+                >
+
+                <span
+                  class="text-sm text-gray-800 py-[8px] px-[12px] border-[1.5px] border-soild border-gray-800 font-medium cursor-pointer tracking-wide hover:text-white hover:border-[#333333] hover:bg-[#333333]"
+                >
+                  <i class="fa-regular fa-heart mr-[6px]"></i>
+                  ADD TO LOOKBOOK</span
+                >
+              </div>
+
+              <span class="text-sm text-[#454647] font-medium cursor-pointer">
+                <i
+                  class="fa-solid fa-down-left-and-up-right-to-center mr-[6px] p-2 rounded-[50%] bg-[#727272] text-white hover:bg-[#333333]"
+                ></i>
+                ADD TO COMPARE</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-[30px] w-[100%]">
+          <div class="overflow-hidden overflow-x-auto scroll">
+            <ul
+              class="bg-[#f8f8f8] flex gap-5 text-base w-max max-md:text-xs max-sm:gap-0"
+            >
+              <li
+                class="info info--active py-3 px-4 cursor-pointer font-normal transition-all duration-200 ease-in"
+              >
+                DESCRIPTION
+              </li>
+              <li
+                class="info py-3 px-4 cursor-pointer text-[#575153] font-normal transition-all duration-200 ease-in"
+              >
+                VIDEO
+              </li>
+              <li
+                class="info py-3 px-4 cursor-pointer text-[#575153] font-normal transition-all duration-200 ease-in"
+              >
+                SIZE & SPECS
+              </li>
+              <li
+                class="info py-3 px-4 cursor-pointer text-[#575153] font-normal transition-all duration-200 ease-in"
+              >
+                DELIVERY & RETURN
+              </li>
+              <li
+                class="info py-3 px-4 cursor-pointer text-[#575153] font-normal transition-all duration-200 ease-in"
+              >
+                REVIEW
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-4 mx-2 max-sm:mx-0">
+            <h1 class="text-[#727272] text-xs font-medium uppercase">
+              Nunc egestas posuere enim, eu maximus erat posuere eget
+            </h1>
+            <p class="text-[#8e8c8c] text-xs mt-2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
+              perferendis laborum nobis fugit exercitationem nihil facilis.
+              Autem labore enim earum sequi a, blanditiis rerum, et quasi, porro
+              fugiat veniam maxime!. Lorem ipsum dolor, sit amet consectetur
+              adipisicing elit. Asperiores at aspernatur suscipit nemo deleniti
+              nostrum hic praesentium eligendi, accusantium illo, rem doloribus
+              laudantium consequuntur officia aut, fugit dolor soluta
+              repudiandae?. Lorem ipsum dolor, sit amet consectetur adipisicing
+              elit. Ea aperiam inventore beatae minus assumenda earum, aliquid
+              repellat ducimus sit, quam iusto modi nam doloremque. Cupiditate
+              pariatur a sapiente nobis et.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer
+      class="p-[40px] mt-[50px] bg-[#f8f8f8] max-lg:p-[20px] max-sm:p-[10px]"
+    >
+      <div class="lg:max-width-customer lg:mx-auto">
+        <div class="flex justify-between items-start flex-wrap gap-[24px]">
+          <div>
+            <h4 class="text-[#575153] text-sm font-medium">INFORMATION</h4>
+            <ul class="mt-4">
+              <li class="text-[#727272] text-xs my-[10px]">The brand</li>
+              <li class="text-[#727272] text-xs my-[10px]">Local stores</li>
+              <li class="text-[#727272] text-xs my-[10px]">Customer service</li>
+              <li class="text-[#727272] text-xs my-[10px]">
+                Privacy & cookies site
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[#575153] text-sm font-medium">WHY BUY FROM US</h4>
+            <ul class="mt-4">
+              <li class="text-[#727272] text-xs my-[10px]">Secure shopping</li>
+              <li class="text-[#727272] text-xs my-[10px]">Testimonials</li>
+              <li class="text-[#727272] text-xs my-[10px]">Award winning</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[#575153] text-sm font-medium">YOUR ACCOUNT</h4>
+            <ul class="mt-4">
+              <li class="text-[#727272] text-xs my-[10px]">Sign in</li>
+              <li class="text-[#727272] text-xs my-[10px]">Register</li>
+              <li class="text-[#727272] text-xs my-[10px]">View cart</li>
+              <li class="text-[#727272] text-xs my-[10px]">
+                View your lookbook
+              </li>
+
+              <li class="text-[#727272] text-xs my-[10px]">
+                Track an order Up
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[#575153] text-sm font-medium">LOOKBOOK</h4>
+            <ul class="mt-4">
+              <li class="text-[#727272] text-xs my-[10px]">Latest posts</li>
+              <li class="text-[#727272] text-xs my-[10px]">Men’s lookbook</li>
+              <li class="text-[#727272] text-xs my-[10px]">Women’s lookbook</li>
+              <li class="text-[#727272] text-xs my-[10px]">
+                Lookbooks RSS feed
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-[#575153] text-sm font-medium">CONTACT DETAILS</h4>
+            <ul class="mt-4">
+              <li class="text-[#727272] text-xs my-[10px]">
+                Head Office: Avenue Fashion, 180-182 Regent Street, London.
+              </li>
+              <li class="text-[#727272] text-xs my-[10px]">
+                Telephone: 0123-456-789
+              </li>
+              <li class="text-[#727272] text-xs my-[10px]">
+                Email: support@yourwebsite.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-[40px] flex justify-center items-center gap-7 items-stretch max-sm:flex-col"
+        >
+          <div
+            class="p-6 flex-1 bg-[#333333] text-4xl text-center text-white max-md:text-2xl"
+          >
+            <h1 class="font-bold">AWARD WINNER</h1>
+            <h2 class="font-thin">FASHION AWARD 2016</h2>
+          </div>
+          <div
+            class="p-6 flex flex-1 justify-center items-center gap-10 bg-blue text-white text-4xl max-md:text-2xl"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-solid fa-dove"></i>
+            <i class="fa-brands fa-square-instagram"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
